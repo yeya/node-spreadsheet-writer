@@ -245,6 +245,9 @@ CsvSpreadsheetWriter.prototype.addCell = function (data, type, styleIndex, merge
     } else if (data === false) {
         cellDef += '0';
     } else {
+        if (/[=+\-@]/.test(data[0])) {
+            data = '\'' + data;
+        }
         cellDef += prepareString(data + '');
     }
 
